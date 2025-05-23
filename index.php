@@ -1,3 +1,13 @@
+<?php
+include 'connexion.php';
+$query = "SELECT * FROM employe";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
