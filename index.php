@@ -21,7 +21,7 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <main>
         <div class="container">
-            <a href="add.html" class="btn-add"> <img src="images/plus.png" alt=""> Ajouter</a>
+            <a href="add.php" class="btn-add"> <img src="images/plus.png" alt=""> Ajouter</a>
 
             <table>
                 <thead>
@@ -34,13 +34,21 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mietete</td>
-                        <td>Glodi</td>
-                        <td>28 ans</td>
-                        <td> <a href="update.html"> <img src="images/pen.png" alt=""> </a></td>
-                        <td> <a href="#"> <img src="images/trash.png" alt=""> </a></td>
-                    </tr>
+                    <?php if (!empty($employes)): ?>
+                        <?php foreach ($employes as $row): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['nom']); ?></td>
+                                <td><?php echo htmlspecialchars($row['prenom']); ?></td>
+                                <td><?php echo htmlspecialchars($row['age']); ?></td>
+                                <td> <a href="update.php?id=<?= $row['id_employe']; ?>"> <img src="images/pen.png" alt=""> </a></td>
+                                <td> <a href="delete.php?id=<?= $row['id_employe']; ?>"> <img src="images/trash.png" alt=""> </a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5">Aucun employé trouvé</td>
+                        </tr>
+                    <?php endif; ?>
                 </tbody>
 
             </table>

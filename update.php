@@ -11,7 +11,7 @@
 <body>
 
     <div class="form">
-        <a href="index.html" class="back-btn"> <img src="images/back.png" alt=""> Retour</a>
+        <a href="index.php" class="back-btn"> <img src="images/back.png" alt=""> Retour</a>
         <h1>Modifier un Employé : </h1>
         <p class="erreur_message">
             Veillez remplir tous les champs !
