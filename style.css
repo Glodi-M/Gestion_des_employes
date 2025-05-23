@@ -66,3 +66,74 @@ tr:nth-child(2n+1) td {
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
 }
+
+
+
+/* PAGE AJOUTEE  FORM*/
+
+.form {
+    background-color: #f6f8f8;
+    padding: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+}
+
+.form form {
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+}
+
+.back-btn {
+    color: #2bc48a;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.back-btn img {
+    margin-right: 5px;
+    height: 20px;
+}
+
+h1 {
+    margin: 10px 0;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.erreur_message {
+    color: red;
+    font-size: 12px;
+}
+
+label {
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #2bc48a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input:focus {
+    border: 1px solid #2bc48a;
+}
+
+input[type="submit"]:hover {
+    background-color: #1a9b6d;
+}
