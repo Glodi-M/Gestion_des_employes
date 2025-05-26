@@ -70,70 +70,97 @@ tr:nth-child(2n+1) td {
 
 
 /* PAGE AJOUTEE  FORM*/
-
-.form {
-    background-color: #f6f8f8;
-    padding: 25px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-
-}
-
-.form form {
-    display: flex;
-    width: 350px;
-    flex-direction: column;
+.form-container {
+    width: 450px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .back-btn {
-    color: #2bc48a;
-    text-decoration: none;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    gap: 0.5rem;
+    color: #555;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
 }
 
 .back-btn img {
-    margin-right: 5px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
 }
 
-h1 {
-    margin: 10px 0;
+.employee-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
     font-weight: 500;
-    text-transform: uppercase;
+    color: #333;
 }
 
-.erreur_message {
-    color: red;
-    font-size: 12px;
-}
-
-label {
-    margin-top: 5px;
-    text-transform: uppercase;
-}
-
-input {
-    padding: 10px;
-    margin: 10px 0;
+.form-group input {
+    padding: 0.75rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    outline: none;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
-input[type="submit"] {
+.form-hint {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.btn-submit {
+    padding: 0.75rem;
     background-color: #2bc48a;
-    color: #fff;
+    ;
+    color: white;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
+    font-size: 1rem;
+    transition: background 0.3s;
 }
 
-input:focus {
-    border: 1px solid #2bc48a;
+.btn-submit:hover {
+    background-color: #2bc48a;
+    ;
 }
 
-input[type="submit"]:hover {
-    background-color: #1a9b6d;
+.alert {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.alert.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #c62828;
+}
+
+.alert.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #2e7d32;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .form-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
 }
