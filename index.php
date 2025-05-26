@@ -26,6 +26,10 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Age</th>
+                        <th>Date de naissance</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Adresse</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
                     </tr>
@@ -37,6 +41,10 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo htmlspecialchars($row['nom']); ?></td>
                                 <td><?php echo htmlspecialchars($row['prenom']); ?></td>
                                 <td><?php echo htmlspecialchars($row['age']); ?></td>
+                                <td><?php echo htmlspecialchars($row['date_naissance']); ?></td>
+                                <td><?php echo htmlspecialchars($row['email']); ?></td>
+                                <td><?php echo htmlspecialchars($row['telephone']); ?></td>
+                                <td><?php echo htmlspecialchars($row['adresse']); ?></td>
                                 <td> <a href="update.php?id=<?= htmlspecialchars($row['id_employe']); ?>">
                                         <img src="images/pen.png" alt=""> </a></td>
                                 <td>
