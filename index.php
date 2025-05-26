@@ -5,9 +5,6 @@ $stmt = $pdo->prepare($query);
 $stmt->execute();
 $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,8 +37,15 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo htmlspecialchars($row['nom']); ?></td>
                                 <td><?php echo htmlspecialchars($row['prenom']); ?></td>
                                 <td><?php echo htmlspecialchars($row['age']); ?></td>
-                                <td> <a href="update.php?id=<?= $row['id_employe']; ?>"> <img src="images/pen.png" alt=""> </a></td>
-                                <td> <a href="delete.php?id=<?= $row['id_employe']; ?>"> <img src="images/trash.png" alt=""> </a></td>
+                                <td> <a href="update.php?id=<?= htmlspecialchars($row['id_employe']); ?>">
+                                        <img src="images/pen.png" alt=""> </a></td>
+                                <td>
+                                    <a href="delete.php?id=<?= htmlspecialchars($row['id_employe']); ?>"
+                                        onclick="return confirm('Voulez-vous vraiment supprimer cet employé ?');">
+                                        <img src="images/trash.png" alt="Supprimer">
+                                    </a>
+                                </td>
+
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
