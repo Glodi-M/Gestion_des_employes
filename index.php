@@ -12,7 +12,7 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion Employés</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../Styles/style.css">
 </head>
 
 <body>
@@ -48,8 +48,7 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td> <a href="update.php?id=<?= htmlspecialchars($row['id_employe']); ?>">
                                         <img src="images/pen.png" alt=""> </a></td>
                                 <td>
-                                    <a href="delete.php?id=<?= htmlspecialchars($row['id_employe']); ?>"
-                                        onclick="return confirm('Voulez-vous vraiment supprimer cet employé ?');">
+                                    <a href="#" onclick="confirmDelete('<?php echo htmlspecialchars($row['id_employe']); ?>'); return false;">
                                         <img src="images/trash.png" alt="Supprimer">
                                     </a>
                                 </td>
@@ -66,6 +65,27 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
         </div>
     </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Voulez-vous vraiment supprimer cet employé ?',
+                text: 'Cette action est irréversible !',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Oui, supprimer',
+                cancelButtonText: 'Annuler'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'delete.php?id=' + encodeURIComponent(id);
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
