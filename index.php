@@ -13,9 +13,31 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion Employés</title>
     <link rel="stylesheet" href="../Styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.php">
+                <img src="../Images/logo.png" alt="Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.php" class="nav-link active">Accueil</a></li>
+            <li><a href="services.php" class="nav-link">Services</a></li>
+            <li><a href="login.php" class="nav-link">Connexion</a></li>
+            <li><a href="register.php" class="nav-btn">Créer un compte</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Gestion des Employés</h1>
+        <p>Bienvenue dans le système de gestion des employés</p>
+    </header>
+
+    <h2 class="dash"> DashBoard</h2>
+
     <main>
         <div class="container">
             <a href="add.php" class="btn-add"> <img src="images/plus.png" alt=""> Ajouter</a>
@@ -66,8 +88,10 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </main>
 
+    <footer>
+        <p>&copy; 2023 Gestion des Employés. Tous droits réservés.</p>
+    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function confirmDelete(id) {
             Swal.fire({
