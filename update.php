@@ -13,7 +13,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
     try {
         // Récupérer les données de l’employé
         $id = $_GET['id'];
-        $stmt = $pdo->prepare("SELECT id_employe, nom, prenom, age FROM employe WHERE id_employe = :id");
+        $stmt = $pdo->prepare("SELECT id_employe, nom, prenom, age, date_naissance, email, telephone, adresse FROM employe WHERE id_employe = :id");
         $stmt->execute(['id' => $id]);
         $employee = $stmt->fetch();
 
@@ -33,11 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nom = $_POST['nom'] ?? '';
         $prenom = $_POST['prenom'] ?? '';
         $age = $_POST['age'] ?? '';
+        $date_naissance = $_POST['date_naissance'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $telephone = $_POST['telephone'] ?? '';
+        $adresse = $_POST['adresse'] ?? '';
+
 
         // Validations
         if (empty($id)) {
             $error_message = "ID de l’employé manquant.";
-        } elseif (empty($nom) || empty($prenom) || empty($age)) {
+        } elseif (empty($nom) || empty($prenom) || empty($age) || empty($date_naissance) || empty($email) || empty($telephone) || empty($adresse)) {
             $error_message = "Tous les champs sont obligatoires.";
         } elseif (!preg_match('/^[A-Za-z\s]+$/', $nom) || !preg_match('/^[A-Za-z\s]+$/', $prenom)) {
             $error_message = "Le nom et le prénom ne doivent contenir que des lettres et des espaces.";
@@ -45,12 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error_message = "L’âge doit être d’au moins 18 ans.";
         } else {
             // Mettre à jour l’employé
-            $query = "UPDATE employe SET nom = :nom, prenom = :prenom, age = :age WHERE id_employe = :id";
+            $query = "UPDATE employe SET nom = :nom, prenom = :prenom, age = :age, date_naissance = :date_naissance, email = :email, telephone = :telephone, adresse = :adresse WHERE id_employe = :id";
             $stmt = $pdo->prepare($query);
             $stmt->execute([
                 ':nom' => $nom,
                 ':prenom' => $prenom,
                 ':age' => (int)$age,
+                ':date_naissance' => $date_naissance,
+                ':email' => $email,
+                ':telephone' => $telephone,
+                ':adresse' => $adresse,
                 ':id' => $id
             ]);
 
@@ -110,6 +119,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" name="prenom" id="prenom" value="<?php echo htmlspecialchars($employee['prenom'],); ?>" required>
                 <label for="age">Âge</label>
                 <input type="number" name="age" id="age" value="<?php echo htmlspecialchars($employee['age'],); ?>" min="18" required>
+                <label for="date_naissance">Date de naissance</label>
+                <input type="date" name="date_naissance" id="date_naissance" value="<?php echo htmlspecialchars($employee['date_naissance'],); ?>" required>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($employee['email'],); ?>" required>
+                <label for="telephone">Téléphone</label>
+                <input type="tel" name="telephone" id="telephone" value="<?php echo htmlspecialchars($employee['telephone'],); ?>">
+                <label for="adresse">Adresse</label>
+                <input type="text" name="adresse" id="adresse" value="<?php echo htmlspecialchars($employee['adresse'],); ?>" required>
                 <input type="submit" value="Modifier" class="btn-add">
             </form>
         <?php else: ?>
