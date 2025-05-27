@@ -100,11 +100,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Swal.fire({
                     icon: 'success',
                     title: 'Succès',
-                    text: '<?php echo htmlspecialchars($success_message, ENT_QUOTES, 'UTF-8'); ?>',
+                    text: '<?php echo htmlspecialchars($success_message); ?>',
                     confirmButtonText: 'OK'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = 'index.php';
+                        window.location.href = 'services.php';
                     }
                 });
             </script>

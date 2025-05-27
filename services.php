@@ -69,7 +69,7 @@ try {
                     Swal.fire({
                         icon: 'error',
                         title: 'Erreur',
-                        text: '<?php echo htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8'); ?>',
+                        text: '<?php echo htmlspecialchars($error_message); ?>',
                         confirmButtonText: 'OK'
                     });
                 </script>
@@ -79,7 +79,7 @@ try {
                     Swal.fire({
                         icon: 'success',
                         title: 'Succès',
-                        text: '<?php echo htmlspecialchars($_GET['success'], ENT_QUOTES, 'UTF-8'); ?>',
+                        text: '<?php echo htmlspecialchars($_GET['success']); ?>',
                         confirmButtonText: 'OK'
                     });
                 </script>
