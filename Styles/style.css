@@ -15,8 +15,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 50px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .logo img {
@@ -265,6 +266,7 @@ footer {
     text-align: center;
     padding: 20px;
     margin-top: 200px;
+    padding-bottom: 60px;
 }
 
 .home-container {
@@ -273,6 +275,7 @@ footer {
     text-align: center;
     padding: 20px;
     margin-bottom: 50px;
+    margin-top: 40px;
 }
 
 .hero-text {

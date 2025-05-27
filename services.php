@@ -1,9 +1,27 @@
 <?php
+session_start();
 include 'connexion.php';
-$query = "SELECT * FROM employe";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Initialize variables
+$error_message = '';
+$is_authenticated = isset($_SESSION['user_id']);
+$is_admin = $is_authenticated && isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+
+if (!$is_authenticated) {
+    header("Location: login.php?error=" . urlencode("Veuillez vous connecter pour accéder aux services."));
+    exit();
+}
+
+try {
+    $query = "SELECT * FROM employe";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+
+    $error_message = "Erreur : " . $e->getMessage();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,17 +35,18 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
             <a href="index.php">
-                <img src="../Images/logo.png" alt="Logo">
+                <img src="Images/logo.png" alt="Logo">
             </a>
         </div>
         <ul class="nav-links">
-            <li><a href="index.php" class="nav-link active">Accueil</a></li>
-            <li><a href="services.php" class="nav-link">Services</a></li>
-            <li><a href="login.php" class="nav-link">Connexion</a></li>
-            <li><a href="register.php" class="nav-btn">Créer un compte</a></li>
+            <li><a href="index.php" class="nav-link">Accueil</a></li>
+            <li><a href="services.php" class="nav-link active">Services</a></li>
+            <li><a href="logout.php" class="nav-link">Déconnexion</a></li>
+            <li><span class="nav-text">Bonjour, <?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'); ?></span></li>
         </ul>
     </nav>
 
@@ -36,11 +55,35 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p>Bienvenue dans le système de gestion des employés</p>
     </header>
 
-    <h2 class="dash"> DashBoard</h2>
+    <!-- Dashboard -->
+    <h2 class="dash"> Tableau de Bord des Employés</h2>
 
     <main>
         <div class="container">
-            <a href="add.php" class="btn-add"> <img src="images/plus.png" alt=""> Ajouter</a>
+            <?php if ($is_admin): ?>
+                <a href="add.php" class="btn-add"> <img src="images/plus.png" alt=""> Ajouter</a>
+            <?php endif; ?>
+
+            <?php if ($error_message): ?>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: '<?php echo htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8'); ?>',
+                        confirmButtonText: 'OK'
+                    });
+                </script>
+            <?php endif; ?>
+            <?php if (isset($_GET['success'])): ?>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Succès',
+                        text: '<?php echo htmlspecialchars($_GET['success'], ENT_QUOTES, 'UTF-8'); ?>',
+                        confirmButtonText: 'OK'
+                    });
+                </script>
+            <?php endif; ?>
 
             <table>
                 <thead>
@@ -52,8 +95,10 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <th>Email</th>
                         <th>Téléphone</th>
                         <th>Adresse</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
+                        <?php if ($is_admin): ?>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,13 +112,15 @@ $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?php echo htmlspecialchars($row['email']); ?></td>
                                 <td><?php echo htmlspecialchars($row['telephone']); ?></td>
                                 <td><?php echo htmlspecialchars($row['adresse']); ?></td>
-                                <td> <a href="update.php?id=<?= htmlspecialchars($row['id_employe']); ?>">
-                                        <img src="images/pen.png" alt=""> </a></td>
-                                <td>
-                                    <a href="#" onclick="confirmDelete('<?php echo htmlspecialchars($row['id_employe']); ?>'); return false;">
-                                        <img src="images/trash.png" alt="Supprimer">
-                                    </a>
-                                </td>
+                                <?php if ($is_admin): ?>
+                                    <td> <a href="update.php?id=<?= htmlspecialchars($row['id_employe']); ?>">
+                                            <img src="images/pen.png" alt=""> </a></td>
+                                    <td>
+                                        <a href="#" onclick="confirmDelete('<?php echo htmlspecialchars($row['id_employe']); ?>'); return false;">
+                                            <img src="images/trash.png" alt="Supprimer">
+                                        </a>
+                                    </td>
+                                <?php endif; ?>
 
                             </tr>
                         <?php endforeach; ?>

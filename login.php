@@ -87,9 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>
         <?php endif; ?>
         <p class="register-link">Pas de compte ? <a href="register.php">Inscrivez-vous ici</a></p>
-        <a href="index.php" class="back-btn">
-            <img src="Images/back.png" alt="Retour"> Retour à la liste
-        </a>
+
     </div>
 </body>
 

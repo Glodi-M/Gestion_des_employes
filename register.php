@@ -74,12 +74,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Styles/style.css">
     <link rel="stylesheet" href="Styles/login.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.php">
+                <img src="Images/logo.png" alt="Logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.php" class="nav-link">Accueil</a></li>
+            <li><a href="services.php" class="nav-link">Services</a></li>
+            <li><a href="login.php" class="nav-link active">Connexion</a></li>
+            <li><a href="register.php" class="nav-btn">Créer un compte</a></li>
+        </ul>
+    </nav>
+
     <div class="register-container">
         <h1>Créer un compte</h1>
         <form action="register.php" method="post" class="employee-form">
@@ -127,9 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>
         <?php endif; ?>
         <p class="login-link">Déjà un compte ? <a href="login.php">Connectez-vous ici</a></p>
-        <a href="index.php" class="back-btn">
-            <img src="images/back.png" alt="Retour"> Retour à la liste
-        </a>
+
     </div>
 </body>
 

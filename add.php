@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="form-container">
-        <a href="index.php" class="back-btn">
+        <a href="services.php" class="back-btn">
             <img src="images/back.png" alt="Retour"> Retour à la liste
         </a>
 
