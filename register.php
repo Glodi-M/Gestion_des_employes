@@ -104,15 +104,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <?php if ($error_message): ?>
             <script>
-                showErrorAlert('<?php echo htmlspecialchars($error_message); ?>');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: '<?php echo htmlspecialchars($error_message); ?>',
+                    confirmButtonText: 'OK'
+                });
             </script>
         <?php endif; ?>
         <?php if ($success_message): ?>
             <script>
-                showSuccessAlert('<?php echo htmlspecialchars($success_message); ?>', 'login.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Succès',
+                    text: '<?php echo htmlspecialchars($success_message); ?>',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'login.php';
+                    }
+                });
             </script>
         <?php endif; ?>
         <p class="login-link">Déjà un compte ? <a href="login.php">Connectez-vous ici</a></p>
+        <a href="index.php" class="back-btn">
+            <img src="images/back.png" alt="Retour"> Retour à la liste
+        </a>
     </div>
 </body>
 
