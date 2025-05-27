@@ -264,4 +264,34 @@ footer {
     color: black;
     text-align: center;
     padding: 20px;
+    margin-top: 200px;
+}
+
+.home-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.hero-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #404040;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-add.secondary {
+    background-color: #6c757d;
+}
+
+.btn-add.secondary:hover {
+    background-color: #5a6268;
 }
