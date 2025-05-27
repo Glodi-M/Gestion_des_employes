@@ -39,7 +39,7 @@ try {
     <nav class="navbar">
         <div class="logo">
             <a href="index.php">
-                <img src="Images/logo.png" alt="Logo">
+                <img src="images/image (2).jpg" alt="Logo" title="Accueil">
             </a>
         </div>
         <ul class="nav-links">

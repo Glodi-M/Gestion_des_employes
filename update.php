@@ -78,11 +78,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un employé</title>
-    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="Styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.php">
+                <img src="images/image (2).jpg" alt="Logo" title="Accueil">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="logout.php" class="nav-link">Déconnexion</a></li>
+    </nav>
+
+
     <div class="form-container">
         <a href="index.php" class="back-btn">
             <img src="images/back.png" alt="Retour"> Retour à la liste
@@ -133,6 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Aucun employé à modifier.</p>
         <?php endif; ?>
     </div>
+
+
 </body>
 
 </html>

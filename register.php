@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <nav class="navbar">
         <div class="logo">
             <a href="index.php">
-                <img src="Images/logo.png" alt="Logo">
+                <img src="images/image (2).jpg" alt="Logo">
             </a>
         </div>
         <ul class="nav-links">

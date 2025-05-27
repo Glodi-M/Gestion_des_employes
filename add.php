@@ -61,6 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.php">
+                <img src="images/image (2).jpg" alt="Logo" title="Accueil">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="logout.php" class="nav-link">Déconnexion</a></li>
+    </nav>
+
+    <!-- Formulaire d'ajout d'employé -->
     <div class="form-container">
         <a href="services.php" class="back-btn">
             <img src="images/back.png" alt="Retour"> Retour à la liste
