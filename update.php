@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validations
         if (empty($id)) {
             $error_message = "ID de l’employé manquant.";
-        } elseif (empty($nom) || empty($prenom) || empty($age) || empty($date_naissance) || empty($email) || empty($telephone) || empty($adresse)) {
+        } elseif (empty($nom) || empty($prenom) || empty($age) || empty($date_naissance) || empty($email) || empty($adresse)) {
             $error_message = "Tous les champs sont obligatoires.";
         } elseif (!preg_match('/^[A-Za-z\s]+$/', $nom) || !preg_match('/^[A-Za-z\s]+$/', $prenom)) {
             $error_message = "Le nom et le prénom ne doivent contenir que des lettres et des espaces.";

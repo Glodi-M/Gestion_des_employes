@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="post" class="employee-form">
             <div class="form-group">
-                <label for="nom">Nom <span>*</span></label>
+                <label for="nom">Nom <span class="obli">*</span></label>
                 <input type="text" name="nom" id="nom"
                     value="<?php echo htmlspecialchars($_POST['nom'] ?? ''); ?>"
                     placeholder="Nom de l'employé" required
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="form-group">
-                <label for="prenom">Prénom <span>*</span></label>
+                <label for="prenom">Prénom <span class="obli">*</span></label>
                 <input type="text" name="prenom" id="prenom"
                     value="<?php echo htmlspecialchars($_POST['prenom'] ?? ''); ?>"
                     placeholder="Prénom de l'employé" required
@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="form-group">
-                <label for="age">Âge <span>*</span></label>
+                <label for="age">Âge <span class="obli">*</span></label>
                 <input type="number" name="age" id="age"
                     value="<?php echo htmlspecialchars($_POST['age'] ?? ''); ?>"
                     placeholder="Âge de l'employé" required
@@ -118,13 +118,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <small class="form-hint">Entre 18 et 70 ans</small>
             </div>
             <div class="form-group">
-                <label for="date_naissance">Date de Naissance <span>*</span></label>
+                <label for="date_naissance">Date de Naissance <span class="obli">*</span></label>
                 <input type="date" name="date_naissance" id="date_naissance"
                     value="<?php echo htmlspecialchars($_POST['date_naissance'] ?? ''); ?>"
                     required>
             </div>
             <div class="form-group">
-                <label for="email">Email <span>*</span></label>
+                <label for="email">Email <span class="obli">*</span></label>
                 <input type="email" name="email" id="email"
                     value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>"
                     placeholder="Email de l'employé" required
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     pattern="[0-9]{10}" title="10 chiffres requis">
             </div>
             <div class="form-group">
-                <label for="adresse">Adresse <span>*</span></label>
+                <label for="adresse">Adresse <span class="obli">*</span></label>
                 <input type="text" name="adresse" id="adresse"
                     value="<?php echo htmlspecialchars($_POST['adresse'] ?? ''); ?>"
                     placeholder="Adresse de l'employé" required
